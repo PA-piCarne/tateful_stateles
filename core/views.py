@@ -1,0 +1,33 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
+
+
+def home_redirect(request):
+    return redirect("login")
+
+
+def register_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "register.html", {"form": form})
+
+
+@login_required
+def dashboard_view(request):
+    return render(request, "dashboard.html", {"username": request.user.username})
+
+
+def products_api(request):
+    products = [
+        {"name": "Laptop", "price": 1200},
+        {"name": "Mouse", "price": 25},
+    ]
+    return JsonResponse(products, safe=False)
