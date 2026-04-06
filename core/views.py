@@ -1,10 +1,23 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 
 
 def home_redirect(request):
     return redirect("login")
+
+
+def register_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "register.html", {"form": form})
 
 
 @login_required

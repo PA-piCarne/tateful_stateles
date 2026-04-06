@@ -5,12 +5,14 @@ Esta aplicación demuestra dos comportamientos en un mismo sistema:
 ## 1) Parte stateful (con estado)
 
 - Ruta de entrada: `/` (redirige a `/login/`).
+- Registro de usuarios: `/register/`.
 - Rutas principales: `/login/` y `/dashboard/`.
 - Usa autenticación de Django con sesión (`sessionid`).
 - Flujo:
-  1. El usuario inicia sesión en `/login/`.
-  2. Si las credenciales son válidas, Django crea sesión.
-  3. El usuario entra a `/dashboard/` y ve: `Bienvenido [usuario]`.
+  1. El usuario se registra en `/register/` (si no tiene cuenta).
+  2. Inicia sesión en `/login/`.
+  3. Si las credenciales son válidas, Django crea sesión.
+  4. El usuario entra a `/dashboard/` y ve: `Bienvenido [usuario]`.
 
 ## 2) Parte stateless (sin estado)
 
@@ -27,6 +29,11 @@ Respuesta ejemplo:
 ]
 ```
 
+## Diseño
+
+- La interfaz (login, registro y dashboard) está centrada en pantalla.
+- Estilo simple y no tan profesional, como pediste.
+
 ## Ejecutar
 
 1. Instalar dependencias:
@@ -37,11 +44,7 @@ Respuesta ejemplo:
    ```bash
    python manage.py migrate
    ```
-3. Crear usuario admin/prueba:
-   ```bash
-   python manage.py createsuperuser
-   ```
-4. Correr servidor:
+3. Correr servidor:
    ```bash
    python manage.py runserver
    ```

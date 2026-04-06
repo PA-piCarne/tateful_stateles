@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <h1>Bienvenido {{ username }}</h1>
-    <p>Esta zona es stateful: usa sesión y cookies.</p>
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Bienvenido {{ username }}</h1>
+<p>Esta zona es stateful: usa sesión y cookies.</p>
+<p class="small"><a class="btn-link" href="{% url 'logout' %}">Cerrar sesión</a></p>
+{% endblock %}
