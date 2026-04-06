@@ -16,7 +16,7 @@
       }
 
       .card {
-        width: min(90vw, 420px);
+        width: min(95vw, 900px);
         background: white;
         border: 1px solid #ddd;
         border-radius: 12px;
@@ -29,7 +29,8 @@
         text-align: left;
       }
 
-      input {
+      input,
+      textarea {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
@@ -49,9 +50,39 @@
         cursor: pointer;
       }
 
+      .danger-btn {
+        background: #d93025;
+      }
+
       .small {
         margin-top: 14px;
         font-size: 14px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background: #f5f8ff;
+      }
+
+      .inline-form {
+        display: inline;
+      }
+
+      .inline-form button,
+      .inline-form .btn-link {
+        margin-top: 0;
       }
     </style>
   </head>

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<h1>Gestión de productos</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{% if is_edit %}Actualizar{% else %}Agregar{% endif %} producto</button>
+  {% if is_edit %}
+  <a class="btn-link" href="{% url 'products' %}">Cancelar edición</a>
+  {% endif %}
+</form>
+
+<hr />
+
+{% if products %}
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description|default:"-" }}</td>
+      <td>${{ product.price }}</td>
+      <td>
+        <a class="btn-link" href="{% url 'product-edit' product.id %}">Editar</a>
+        <form method="post" action="{% url 'product-delete' product.id %}" class="inline-form">
+          {% csrf_token %}
+          <button type="submit" class="danger-btn">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Aún no hay productos registrados.</p>
+{% endif %}
+
+<p class="small">
+  <a class="btn-link" href="{% url 'dashboard' %}">Volver al dashboard</a>
+</p>
+{% endblock %}
