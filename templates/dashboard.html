@@ -4,6 +4,9 @@
 
 {% block content %}
 <h1>Bienvenido {{ username }}</h1>
-<p>klk manito te la lavas.</p>
+<p>Gestiona tus productos desde un solo lugar.</p>
+<p>
+  <a class="btn-link" href="{% url 'products' %}">Ir a productos</a>
+</p>
 <p class="small"><a class="btn-link" href="{% url 'logout' %}">Cerrar sesión</a></p>
 {% endblock %}
