@@ -4,7 +4,8 @@ Esta aplicación demuestra dos comportamientos en un mismo sistema:
 
 ## 1) Parte stateful (con estado)
 
-- Ruta: `/login/` y `/dashboard/`
+- Ruta de entrada: `/` (redirige a `/login/`).
+- Rutas principales: `/login/` y `/dashboard/`.
 - Usa autenticación de Django con sesión (`sessionid`).
 - Flujo:
   1. El usuario inicia sesión en `/login/`.
@@ -44,3 +45,6 @@ Respuesta ejemplo:
    ```bash
    python manage.py runserver
    ```
+
+> Nota: si escribes `python mange.py sunserver` dará error por typo.
+> El comando correcto es: `python manage.py runserver`.
